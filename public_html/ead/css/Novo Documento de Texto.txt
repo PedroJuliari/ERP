@@ -1,0 +1,51 @@
+.lado-dir .plataforma .basebtn{
+	width:100%;
+	float:left;
+	margin-bottom:50px;
+}
+.lado-dir .plataforma .basebtn .anterior{
+	width:135px;
+	height:26px;
+	float:left;
+	background:#fff;
+}
+.lado-dir .plataforma .basebtn .proximo{
+	width:135px;
+	height:26px;
+	float:right;
+	background:#fff;
+}
+.lado-dir.plataforma .basecont{
+	width:100%;
+	float:left;
+	
+}
+.lado-dir.plataforma .basecont h5{
+	width:100%;
+	float:left;
+    background:#fff;
+	display:block;
+	font-size:20px;
+	font-weight:700px;
+	padding:10px;
+	
+	
+}
+.lado-dir.plataforma .lado-dir .plataforma .basecont .cont{
+	width:383%;
+	float:left;
+    background:#fff;
+	border:solid 1px #ccc;
+	min-height:157px;
+	
+	
+}
+.lado-dir .plataforma .basecont .downloads{
+	width:250%;
+	float:right;
+    background:#fff;
+	border:solid 1px #ccc;
+	min-height:157px;
+	
+	
+}

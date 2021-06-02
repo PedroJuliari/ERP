@@ -1,0 +1,13 @@
+{
+    "minimum-stability": "dev",
+    "autoload": {
+           "psr-4": {
+            "app\\": "app/"}
+    },
+    "require": {
+            "nfephp-org/sped-nfe" : "dev-master",
+            "nfephp-org/sped-nfe" : "^5.0",
+			"nfephp-org/sped-da" : "^0.1"
+    }
+}
+
