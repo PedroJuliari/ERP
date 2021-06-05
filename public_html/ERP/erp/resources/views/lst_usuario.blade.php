@@ -1,5 +1,10 @@
+
+
 @extends('templaite')
 @section('conteudo')
+
+
+
 <div class="col-9 central mb-3">
 <div class="rows">	
                 <div class="col-12">
@@ -35,7 +40,7 @@
                     <div class="tabela-responsiva pb-4">
                     @csrf
                     <table cellpadding="0" cellspacing="0" id="dataTable" width="100%">
-                  
+                
                             <thead>
                                     <tr>
                                        <th align="center">Nome</th>
@@ -47,29 +52,32 @@
                                        <th align="center" width="100">Permissão</th>
                                     </tr>
                             </thead>
-                            <tbody>   
+                            <tbody>  
+                            @csrf 
                             @foreach($lista as $ls)                                   
                              <tr>
                                 <td align="center">{{$ls->nome}}</td>
                                 <td align="left">{{$ls->email}}</td>
+                             
 								<td align="center">{{$ls->celular}}</td>
-								<td align="center">{{$ls->ativo}}</td>                                											
-                                <td align="center"><a href="{{"usuarios/$ls->id/edit"}}" class=""><i class="fas fa-edit"></i> Editar</a></td>                                   											
-                                <td align="center"><a href="{{"usuarios/$ls->id"}}" class="js-del"><i class="fas fa-trash-alt"></i> Excluir</a></td>                                   											
-                                <td align="center"><a href="index.php?link=13" class=""><i class="fas fa-edit"></i> Permissões</a></td>    
-                             </tr>                 o
-                            @endforeach
-                                            						
+								<td align="center">{{$ls->ativo}}</td>  
+
+                                                     											
+                                <td align="center"><a href="{{url("usuarios/$ls->id/edit")}}"><i class="fas fa-edit"> Editar</a></td>                                   											
+                                <td align="center"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-trash-alt"></i>Excluir</a></td>                                   											
+                                <td align="center"><a href="index.php?link=13" ><i class="fas fa-edit"></i> Permissões</a></td>    
+                             </tr>  
+                             @endforeach      
+                           						
                         </tbody>
                                 </table>
+
 								
                         </div>
 
                         </div>
-
-                   
-                    <!--
-                        <div class="caixa p-2">
+                      
+                        <!--<div class="caixa p-2">
                                 <div class="msg msg-verde">
                                 <p><b><i class="fas fa-check"></i> Mensagem de boas vindas</b> Parabéns seu produto foi inserido com sucesso</p>
                                 </div>
@@ -85,5 +93,31 @@
 
         </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"  id="exampleModalLabel">Excluir</h5>
+        <form action="{{url("usuarios/$ls->id")}}" method="post">
+        @csrf 
+        @method('delete')
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Deseja mesmo excluir o usuario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não</button>
+        <button type="submit" class="btn btn-success">>Sim</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
 
 @endsection

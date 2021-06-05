@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
+
+	<script type="text/javascript">
+$('#deletar').modal('hide');
+</script>
+
 		<title>Sistema ERP</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale =1">		
 		<!--css-->
-		
+		<link rel="stylesheet" href="{{url('../bootstrap/bootstrap/css/bootstrap.css')}}">
 		<link rel="stylesheet" href="{{url('../resources/demos/style.css')}}">
 		<link rel="stylesheet" href="{{url('../resources/js/datatables/css/jquery.dataTables.min.css')}}">
 		<link rel="stylesheet" href="{{url('../resources/js/datatables/css/responsive.dataTables.min.css')}}">
@@ -25,9 +30,15 @@
 <div class="rows mx-0">
 
 @yield('conteudo')
-<script src="{{url('../resources/js/delet.js')}}"></script>	
+
+
 </div>
 
+
+
+
+    <script src="{{url('../resources/js/bootstrap.js')}}"></script>	
+    <script src="{{url('../resources/js/delet.js')}}"></script>	
 	<script src="{{url('../resources/js/jquery.min.js')}}"></script>
 	<script src="{{url('../resources/js/tinymce/tinymce.min.js')}}"></script>
 	<script src="{{url('../resources/js/datatables/js/jquery.dataTables.min.js')}}"></script>
@@ -40,11 +51,16 @@
     <script src="{{url('../resources/js/chart.js/Chart.min.js')}}"></script>
 	<script src="{{url('../resources/js/funcao.js')}}"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
+	
+<!-- JavaScript Bundle with Popper -->
+<script src="{{url('../bootstrap/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+ <script>
 	  $( function() {
 		$( "#tab" ).tabs();
 	  } );
   </script>
+
+
 </body>
 	
 </html>

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\OrdenServicoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +20,37 @@ Route::get('/', function () {
     return view('home');
 });
 
+//Route::resource('/usuarios',UsuarioController::class);
 
-Route::resource('/usuarios',UsuarioController::class)->only([
-    'index','create','store','edit','update'
-]);
+Route::delete('/usuarios/{id}',[UsuarioController::class,'destroy']);
+Route::put('/usuarios/{id}',[UsuarioController::class,'update']);
+Route::get('/usuarios/{id}/edit',[UsuarioController::class,"edit"]);
+Route::get('/usuarios/create',[UsuarioController::class,'create']);
+Route::get('/usuarios/{id}',[UsuarioController::class,'show']);
+Route::get('/usuarios',[UsuarioController::class,'index']);
+Route::post('/usuarios',[UsuarioController::class,'store']);
 
+//rota ordens de serviços
+//Route::resource('/OrServicos',OrdenServicoController::class);
+Route::get('/OrServicos',[OrdenServicoController::class,'index']);
+Route::get('/OrServicos/{id}/edit',[OrdenServicoController::class,"edit"]);
+Route::get('/OrServicos/create',[OrdenServicoController::class,'create']);
+Route::put('/OrServicos/{id}',[OrdenServicoController::class,'update']);
+Route::delete('/OrServicos/{id}',[OrdenServicoController::class,'destroy']);
+Route::post('/OrServicos',[OrdenServicoController::class,'store']);
+
+//rotas  categoria
+Route::get('/categoria',[CategoriaController::class,'index']);
+Route::get('/categoria/{id}/edit',[CategoriaController::class,"edit"]);
+Route::get('/categoria/create',[CategoriaController::class,'create']);
+Route::put('/categoria/{id}',[CategoriaController::class,'update']);
+Route::delete('/categoria/{id}',[CategoriaController::class,'destroy']);
+Route::post('/categoria',[CategoriaController::class,'store']);
+
+//rotas  funcionarios
+Route::get('/funcionario',[FuncionarioController::class,'index']);
+Route::get('/funcionario/{id}/edit',[FuncionarioController::class,"edit"]);
+Route::get('/funcionario/create',[FuncionarioController::class,'create']);
+Route::put('/funcionario/{id}',[FuncionarioController::class,'update']);
+Route::delete('/funcionario/{id}',[FuncionarioController::class,'destroy']);
+Route::post('/funcionario',[FuncionarioController::class,'store']);

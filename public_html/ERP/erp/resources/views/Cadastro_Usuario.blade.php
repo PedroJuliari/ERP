@@ -6,7 +6,7 @@
 <form action="{{url("usuarios/$edita->id")}}" method="Post">
 @method('PUT')
  @else 
- <form action="{{url('usuarios')}}" method="Post">
+ <form action="{{url("usuarios/")}}" method="Post">
 
 @endif                    
    <div id="tab">
@@ -19,32 +19,32 @@
 
 				<div class="col-6 mb-3">
 						<label class="text-label">Nome</label>	
-						<input type="text" name="nome" value="{{$edita->nome ??''}}" placeholder="Digite aqui..." class="form-campo">
+						<input type="text" name="nome" value="{{$edita->nome ??''}}" placeholder="Digite aqui..." class="form-campo"required="">
 				</div>                                    
 		
 			
 				<div class="col-4 mb-3">
 						<label class="text-label">Data Cadastro</label>	
-						<input type="date" name="data_cadastro" value="{{$edita->data_cadastro ??''}}" placeholder="Digite aqui..." class="form-campo">
+						<input type="date" name="data_cadastro" value="{{$edita->data_cadastro ??''}}" placeholder="Digite aqui..." class="form-campo"required="">
 				</div>	
 
 				<div class="col-8 mb-3">
 						<label class="text-label">E-mail</label>	
-						<input type="text" name="email" value="{{$edita->email ??''}}" placeholder="Digite aqui..." class="form-campo">
+						<input type="text" name="email" value="{{$edita->email ??''}}" placeholder="Digite aqui..." class="form-campo"required="">
 				</div>
 				<div class="col-4 mb-3">
 						<label class="text-label">Senha</label>	
-						<input type="password" name="senha" value="{{$edita->senha ??''}}" placeholder="Digite aqui..." class="form-campo">
+						<input type="password" name="senha" value="{{$edita->senha ??''}}" placeholder="Digite aqui..." class="form-campo"required="">
 				</div>
 
 				<div class="col-3 mb-3">
 						<label class="text-label">Celular:</label>	
-						<input type="text" name="celular" value="{{$edita->celular ??''}}" placeholder="Digite aqui..." class="form-campo">
+						<input type="text" name="celular" value="{{$edita->celular ??''}}" placeholder="Digite aqui..." class="form-campo"required="">
 				</div>
 				<div class="col-2">
 					<label class="text-label">Ativo</label>
 					<select class="form-campo" name="ativo">
-					        <option value="{{$edita->ativo ??'S'}}">{{$edita->ativo}}</option> 
+					       
 						    <option value="S">S</option>                                            
 							<option value="N">N</option> 
 					</select>

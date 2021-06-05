@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\Categoria;
 
-class UsuarioController extends Controller
+class CategoriaController extends Controller
 {
 
-private $objUsuario;
+    private $objCat;
 
-public function __construct(){
-    $this->objUsuario=new Usuario();
-}
-
+    public function __construct(){
+        $this->objCat=new Categoria();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +20,8 @@ public function __construct(){
      */
     public function index()
     {
-        $lista = $this->objUsuario->all();
-        return view('lst_usuario',compact('lista'));
+        $dados =$this->objCat->all();
+        return view('lst_categoria', compact('dados'));
     }
 
     /**
@@ -32,8 +31,7 @@ public function __construct(){
      */
     public function create()
     {
-       // $lista = $this->objUsuario->all();
-        return view('Cadastro_Usuario');
+        return view('frm_categoria');
     }
 
     /**
@@ -44,16 +42,13 @@ public function __construct(){
      */
     public function store(Request $request)
     {
-        $ok= $this->objUsuario->create([
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
+        $ok= $this->objCat->create([
+            'categoria'=>$request->categoria,
+            'ativo_categoria'=>$request->ativo_categoria
+            
         ]);
         if($ok){
-            return redirect('usuarios');
+            return redirect('categoria');
         }
     }
 
@@ -65,9 +60,7 @@ public function __construct(){
      */
     public function show($id)
     {
-        if($dados = Usuario::find($id))
-        return redirect()->back();
-
+        //
     }
 
     /**
@@ -78,9 +71,8 @@ public function __construct(){
      */
     public function edit($id)
     {
-        //return('veio aqui');
-        $edita =$this->objUsuario->find($id);
-        return view('Cadastro_Usuario', compact('edita'));
+        $edita =$this->objCat->find($id);
+        return view('frm_categoria', compact('edita'));
     }
 
     /**
@@ -92,17 +84,12 @@ public function __construct(){
      */
     public function update(Request $request, $id)
     {
-        $this->objUsuario->where(['id'=>$id])->update([
+        $this->objCat->where(['id'=>$id])->update([
 
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
-
-        ]);
-        return redirect('usuarios');
+            'categoria'=>$request->categoria,
+            'ativo_categoria'=>$request->ativo_categoria
+             ]);
+        return redirect('categoria');
     }
 
     /**
@@ -113,10 +100,9 @@ public function __construct(){
      */
     public function destroy($id)
     {
-     $deleta =$this->objUsuario->where('id',$id)->first();
-     if($deleta)
-     $deleta->delete();
-        return redirect('/usuarios');
-        
+        $deleta =$this->objCat->where('id',$id)->first();
+        if($deleta)
+        $deleta->delete();
+           return redirect('/categoria');
     }
 }
