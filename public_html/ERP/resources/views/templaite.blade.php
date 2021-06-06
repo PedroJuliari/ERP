@@ -54,7 +54,7 @@ $('#deletar').modal('hide');
 	
 <!-- JavaScript Bundle with Popper -->
 <script src="{{url('../bootstrap/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
- <script>
+<script>
 	  $( function() {
 		$( "#tab" ).tabs();
 	  } );

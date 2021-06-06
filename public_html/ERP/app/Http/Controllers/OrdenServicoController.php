@@ -3,28 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\OrdenServico;
 
-class UsuarioController extends Controller
+class OrdenServicoController extends Controller
 {
+    private $objOrdenServico;
 
-private $objUsuario;
+    public function __construct(){
 
-public function __construct(){
-    $this->objUsuario=new Usuario();
-}
+       $this->objOrdenServico=new OrdenServico();
 
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $lista = $this->objUsuario->all();
-        return view('lst_usuario',compact('lista'));
-
-        
+    {   $dados = $this->objOrdenServico->all();
+        return view('ListaOrdenProducao',compact('dados'));
     }
 
     /**
@@ -34,8 +31,7 @@ public function __construct(){
      */
     public function create()
     {
-       // $lista = $this->objUsuario->all();
-        return view('Cadastro_Usuario');
+        return view('OrdenProducao');
     }
 
     /**
@@ -46,16 +42,12 @@ public function __construct(){
      */
     public function store(Request $request)
     {
-        $ok= $this->objUsuario->create([
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
+        $ok= $this->objOrdenServico->create([
+            'processo_produtivo'=>$request->processo_produtivo,
+            'observacao'=>$request->observacao
         ]);
         if($ok){
-            return redirect('usuarios');
+            return redirect('OrServicos');
         }
     }
 
@@ -67,9 +59,7 @@ public function __construct(){
      */
     public function show($id)
     {
-        if($dados = Usuario::find($id))
-        return redirect()->back();
-
+        
     }
 
     /**
@@ -80,9 +70,8 @@ public function __construct(){
      */
     public function edit($id)
     {
-        //return('veio aqui');
-        $edita =$this->objUsuario->find($id);
-        return view('Cadastro_Usuario', compact('edita'));
+        $edita =$this->objOrdenServico->find($id);
+        return view('OrdenProducao', compact('edita'));
     }
 
     /**
@@ -94,17 +83,13 @@ public function __construct(){
      */
     public function update(Request $request, $id)
     {
-        $this->objUsuario->where(['id'=>$id])->update([
+        $this->objOrdenServico->where(['id'=>$id])->update([
 
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
+            'processo_produtivo'=>$request->processo_produtivo,
+            'observacao'=>$request->observacao
 
         ]);
-        return redirect('usuarios');
+        return redirect('/OrServicos');
     }
 
     /**
@@ -115,10 +100,9 @@ public function __construct(){
      */
     public function destroy($id)
     {
-     $deleta =$this->objUsuario->where('id',$id)->first();
-     if($deleta)
-     $deleta->delete();
-        return redirect('/usuarios');
-        
+        $deleta =$this->objOrdenServico->where('id',$id)->first();
+        if($deleta)
+        $deleta->delete();
+           return redirect('/OrServicos');
     }
 }

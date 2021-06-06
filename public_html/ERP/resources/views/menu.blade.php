@@ -20,8 +20,8 @@
 			<div id="accordion" >
 				  <h3>Categoria</h3>
 					<ul>
-						<li><a href="index.php?link=2">Lista todos</a></li>
-						<li><a href="index.php?link=3"> Cadastrar novo</a></li>							
+						<li><a href="{{url('categoria')}}">Lista todos</a></li>
+						<li><a href="{{url('categoria/create')}}"> Cadastrar novo</a></li>							
 					</ul>
 				  <h3>Unidade</h3>
 					<ul>
@@ -42,9 +42,14 @@
 						<li><a href="index.php?link=10">Lista todos</a></li>
 						<li><a href="index.php?link=11"> Cadastrar novo</a></li>							
 					</ul>
+					<h3>Funcionario</h3>
+					<ul>
+						<li><a href="{{url('funcionario')}}">Lista todos</a></li>
+						<li><a href="{{url('funcionario/create')}}"> Cadastrar novo</a></li>							
+					</ul>
 				  <h3>Usuário</h3>
 					<ul>
-						<li><a href="{{route('usuario.index')}}">Lista</a></li>
+						<li><a href="{{url('usuarios')}}">Lista</a></li>
 						<li><a href="index.php?link=14"> Tabela</a></li>							
 						<li><a href="index.php?link=16"> Ações</a></li>							
 					</ul>
@@ -97,7 +102,8 @@
 		<h1 class="tt px-2"><b><i class="fas fa-cubes"></i> Produções</b></h1>
 		
 		<li><a href="index.php?link=23">Insumos</a></li>
-		<li><a href="index.php?link=24">Ordem de produção</a></li>
+		<li><a href="{{url('OrServicos')}}">Ordem de produção</a></li>
+		<li><a href="{{url('maquinas')}}">Maquinas</a></li>
 		
 	</ul>
 </nav>
