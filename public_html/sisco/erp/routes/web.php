@@ -24,7 +24,7 @@ Route::get('/', function () {
 //Route::resource('/usuarios',UsuarioController::class);
 
 Route::delete('/usuarios/{id}',[UsuarioController::class,'destroy']);
-Route::put('/usuarios/{id}',[UsuarioController::class,'update']);
+Route::put('/usuarios/{id}',[UsuarioController::class,'update'])->name('usuario');
 Route::get('/usuarios/{id}/edit',[UsuarioController::class,"edit"]);
 Route::get('/usuarios/create',[UsuarioController::class,'create']);
 Route::get('/usuarios/{id}',[UsuarioController::class,'show']);

@@ -5,11 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
+        <title>ERP</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{url('../resources/css/styles.css')}}" rel="stylesheet" />
+        <link href="{{url('../resources/css/bootstrap.min.css')}}" rel="stylesheet" />
+        <!--<link href="{{url('../../resources/css/dataTable.css')}}" rel="stylesheet" />-->
+        
+        <!-- CSS only -->
+        <!-- Importando o css do bootstrap -->
+         
+     <!--   <script type="module">
+  import { Toast } from 'bootstrap.esm.min.js'
+
+  Array.from(document.querySelectorAll('.toast'))
+    .forEach(toastNode => new Toast(toastNode))
+</script>-->
+        
+  
+         <!-- JavaScript Bundle with Popper -->
+
+      
 		
     </head>
     <body>
@@ -110,15 +127,33 @@
 				@yield('conteudo')
         <!-- Bootstrap core JS-->
 
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		
 
      <!-- JavaScript Bundle with Popper -->
-     <script src="{{url('../resources/js/bootstrap.bundle.min.js')}}"></script>
+
+     <!--<script src="{{url('../resources/js/dataTable.bootstrap.min.js')}}"></script>-->
+     <script src="{{url('../resources/js/bootstrap.min.js')}}"></script>
      <script src="{{url('../resources/js/Modaldados.js')}}"></script>
      <script src="{{url('../resources/js/scripts.js')}}"></script>
-     <script src="{{url('../resources/js/ajax.js')}}"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+     <!--<script src="{{url('../resources/js/ajax.js')}}"></script>-->
+
+     <!-- Importando o js do bootstrap -->
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+   <!--  <script>
+      $(function(){
+    $('#myModal').modal('show');
+});
+     </script>-->
+
+     
+  
+
+  
 
     </body>
 </html>

@@ -12,9 +12,13 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $objUsuario;
+    public function __construct(){
+        $this->objUsuario=new Usuario();
+    }
     public function index()
     {
-        $dados = Usuario::all();
+        $dados=Usuario::orderby('id','desc')->paginate();
         return view('lst_usuarios',compact('dados'));
         
     }
@@ -30,10 +34,11 @@ class UsuarioController extends Controller
     }
     public function editar($id)
     {
-        $dados=Usuario::orderby('id','desc')->paginate();
-        //$dados =Usuario::find($id);
-        return view('lst_usuarios',compact('dados','id'));
-       
+         $dados=Usuario::orderby('id','desc')->paginate();
+         $id2 =Usuario::find($id);
+       //return view('lst_usuarios',['dados'=>$dados,'id2'=>$id2]);
+       return view('lst_usuarios',compact('dados','id2'));
+     
     }
 
     /**
@@ -93,6 +98,36 @@ class UsuarioController extends Controller
             return redirect('usuarios');
         }
     }
+
+    //MODELO POR JS
+  /*  public function updateModal(Request $request, $id)
+    {
+        {
+            $this->validate($request,[
+    
+                'nome'=>'$required',
+                'email'=>'$required',
+                'senha'=>'$required',
+                'ativo'=>'$required',
+                'celular'=>'$required',
+                'data_cadastro'=>'$required'
+    
+            ]);
+            $emp = new Usuarios::find($id);
+            
+           $emp->name=$request->input('fnome');
+           $emp->email=$request->input('femail');
+           $emp->senha=$request->input('fsenha');
+           $emp->ativo=$request->input('fativo');
+           $emp->celular=$request->input('fcelular');
+          
+
+
+
+
+            return redirect('usuarios')->with('success',Data Updated);
+        }
+    }*/
 
     /**
      * Remove the specified resource from storage.

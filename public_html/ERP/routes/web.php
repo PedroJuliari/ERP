@@ -23,13 +23,15 @@ Route::get('/', function () {
 
 //Route::resource('/usuarios',UsuarioController::class);
 
-Route::delete('/usuarios/{id}',[UsuarioController::class,'destroy']);
-Route::put('/usuarios/{id}',[UsuarioController::class,'update']);
+Route::delete('/usuarios/{id}',[UsuarioController::class,'destroy'])->name('deletando');
+Route::put('/usuarios/{id}',[UsuarioController::class,'update'])->name('usuario');
 Route::get('/usuarios/{id}/edit',[UsuarioController::class,"edit"]);
 Route::get('/usuarios/create',[UsuarioController::class,'create']);
 Route::get('/usuarios/{id}',[UsuarioController::class,'show']);
 Route::get('/usuarios',[UsuarioController::class,'index']);
 Route::post('/usuarios',[UsuarioController::class,'store']);
+Route::get('/usuarios/{id}',[UsuarioController::class,'editar'])->name('editar');
+Route::any('/usuarios/deletar/{id}',[UsuarioController::class,'Deletar'])->name('Deletar');
 
 //rota ordens de serviços
 //Route::resource('/OrServicos',OrdenServicoController::class);
@@ -47,7 +49,7 @@ Route::get('/categoria/create',[CategoriaController::class,'create']);
 Route::put('/categoria/{id}',[CategoriaController::class,'update']);
 Route::delete('/categoria/{id}',[CategoriaController::class,'destroy']);
 Route::post('/categoria',[CategoriaController::class,'store']);
-Route::get('/categoria/{id}',[CategoriaController::class,"modal"])->name('modal.deleta');
+//Route::get('/categoria/{id}/delete',[CategoriaController::class,"modal"])->name('modal.deleta');
 
 //rotas  funcionarios
 Route::get('/funcionario',[FuncionarioController::class,'index']);

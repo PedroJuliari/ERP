@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    protected $table='usuarios';
-    protected $fillable = array('id','nome', 'email', 'celular', 'ativo','senha','data_cadastro');
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'email',
+        'celular',
+        'ativo',
+        'senha',
+        'data_cadastro'
+    ];
 }

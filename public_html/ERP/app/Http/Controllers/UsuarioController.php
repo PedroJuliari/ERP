@@ -7,23 +7,19 @@ use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
-
-private $objUsuario;
-
-public function __construct(){
-    $this->objUsuario=new Usuario();
-}
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    private $objUsuario;
+    public function __construct(){
+        $this->objUsuario=new Usuario();
+    }
     public function index()
     {
-        $lista = $this->objUsuario->all();
-        return view('lst_usuario',compact('lista'));
-
+        $dados=Usuario::orderby('id','desc')->paginate();
+        return view('lst_usuarios',compact('dados'));
         
     }
 
@@ -34,8 +30,15 @@ public function __construct(){
      */
     public function create()
     {
-       // $lista = $this->objUsuario->all();
-        return view('Cadastro_Usuario');
+        //
+    }
+    public function editar($id)
+    {
+         $dados=Usuario::orderby('id','desc')->paginate();
+         $id2 =Usuario::find($id);
+       //return view('lst_usuarios',['dados'=>$dados,'id2'=>$id2]);
+       return view('lst_usuarios',compact('dados','id2'));
+     
     }
 
     /**
@@ -46,16 +49,18 @@ public function __construct(){
      */
     public function store(Request $request)
     {
-        $ok= $this->objUsuario->create([
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
-        ]);
-        if($ok){
-            return redirect('usuarios');
+        {
+            $ok= $this->objUsuario->create([
+                'nome'=>$request->nome,
+                'email'=>$request->email,
+                'senha'=>$request->senha,
+                'ativo'=>$request->ativo,
+                'celular'=>$request->celular,
+                'data_cadastro'=>$request->data_cadastro
+            ]);
+            if($ok){
+                return redirect('usuarios');
+            }
         }
     }
 
@@ -67,9 +72,7 @@ public function __construct(){
      */
     public function show($id)
     {
-        if($dados = Usuario::find($id))
-        return redirect()->back();
-
+        //
     }
 
     /**
@@ -80,11 +83,10 @@ public function __construct(){
      */
     public function edit($id)
     {
-        //return('veio aqui');
-        $edita =$this->objUsuario->find($id);
-        return view('Cadastro_Usuario', compact('edita'));
+        //$dados=Usuario::find($id);
+        //return view("lst_usuarios",compact('dados'));
+     
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -94,18 +96,50 @@ public function __construct(){
      */
     public function update(Request $request, $id)
     {
-        $this->objUsuario->where(['id'=>$id])->update([
-
-            'nome'=>$request->nome,
-            'email'=>$request->email,
-            'senha'=>$request->senha,
-            'ativo'=>$request->ativo,
-            'celular'=>$request->celular,
-            'data_cadastro'=>$request->data_cadastro
-
-        ]);
-        return redirect('usuarios');
+        {
+            $this->objUsuario->where(['id'=>$id])->update([
+    
+                'nome'=>$request->nome,
+                'email'=>$request->email,
+                'senha'=>$request->senha,
+                'ativo'=>$request->ativo,
+                'celular'=>$request->celular,
+                'data_cadastro'=>$request->data_cadastro
+    
+            ]);
+            return redirect('usuarios');
+        }
     }
+
+    //MODELO POR JS
+  /*  public function updateModal(Request $request, $id)
+    {
+        {
+            $this->validate($request,[
+    
+                'nome'=>'$required',
+                'email'=>'$required',
+                'senha'=>'$required',
+                'ativo'=>'$required',
+                'celular'=>'$required',
+                'data_cadastro'=>'$required'
+    
+            ]);
+            $emp = new Usuarios::find($id);
+            
+           $emp->name=$request->input('fnome');
+           $emp->email=$request->input('femail');
+           $emp->senha=$request->input('fsenha');
+           $emp->ativo=$request->input('fativo');
+           $emp->celular=$request->input('fcelular');
+          
+
+
+
+
+            return redirect('usuarios')->with('success',Data Updated);
+        }
+    }*/
 
     /**
      * Remove the specified resource from storage.
@@ -113,12 +147,29 @@ public function __construct(){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+     //metodo que chama a modal
+     public function Deletar($id)
+     {
+          $dados=Usuario::orderby('id','desc')->paginate();
+          $id3 =Usuario::find($id);
+        //return view('lst_usuarios',['dados'=>$dados,'id2'=>$id2]);
+        return view('lst_usuarios',compact('dados','id3'));
+      
+     }
+
+
     public function destroy($id)
     {
-     $deleta =$this->objUsuario->where('id',$id)->first();
-     if($deleta)
-     $deleta->delete();
-        return redirect('/usuarios');
-        
-    }
-}
+       // $del=$this->objUsuario->destroy($id);
+        //return($del)?"sim":"não";
+        //{
+            $deleta =$this->objUsuario->where('id',$id)->first();
+            if($deleta)
+            $deleta->delete();
+               return redirect('/usuarios');
+               
+           }
+        }
+    
